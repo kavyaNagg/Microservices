@@ -1,0 +1,30 @@
+#server:
+#  port: 9000
+#
+#spring:
+#  application:
+#    name: api-gateway
+#
+#  ## Gateway Configurations
+#
+#  cloud:
+#    gateway:
+#      routes:
+#        ## Customer Service
+#        - id: customer-management-service
+#          uri: lb://customer-management-service
+#          predicates:
+#            - Path=/custom/**
+#        ## Account Service
+#        - id: account-management-service
+#          uri: lb://account-management-service
+#          predicates:
+#            - Path=/account/**
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#    prefer-ip-address: true
+#  client:
+#    server-url:
+#      defaultZone: http://localhost:8761/eureka
