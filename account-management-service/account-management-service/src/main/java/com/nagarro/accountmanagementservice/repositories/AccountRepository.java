@@ -22,6 +22,6 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
 
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query("update Account set currentBalance = currentBalance+?2 where accountId=?1")
+    @Query("update Account set currentBalance = currentBalance-?2 where accountId=?1")
     public void withdrawAmountByAcctId(int accountId, double currentBalance);
 }
