@@ -20,8 +20,6 @@ public class Account {
 
     private String accountHolderName;
 
-//    private String accountName;
-
     private double currentBalance;
 
 
