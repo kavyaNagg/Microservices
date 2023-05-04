@@ -85,8 +85,8 @@ public class AccountController {
 
     // depositAmount
     @PutMapping("/account/{accountId}/deposit/{amount}")
-    public void depositAmount(@PathVariable int accountId, @PathVariable Integer amount) {
-        int initBal = getBalance(accountId);
+    public void depositAmount(@PathVariable int accountId, @PathVariable double amount) {
+        double initBal = getBalance(accountId);
         accountService.depositAmount(accountId, amount);
         Logger logger = new Logger(accountId, "Deposited", "Success", initBal, initBal + amount);
         loggerController.addLog(logger);
@@ -94,8 +94,8 @@ public class AccountController {
 
     // withdrawAmount
     @PutMapping("/account/{accountId}/withdraw/{amount}")
-    public void withdrawAmount(@PathVariable int accountId, @PathVariable Integer amount) {
-        int initBal = getBalance(accountId);
+    public void withdrawAmount(@PathVariable int accountId, @PathVariable double amount) {
+        double initBal = getBalance(accountId);
         accountService.withdrawAmount(accountId, amount);
         Logger logger = new Logger(accountId, "Withdrawn", "Success", initBal, initBal - amount);
         loggerController.addLog(logger);
