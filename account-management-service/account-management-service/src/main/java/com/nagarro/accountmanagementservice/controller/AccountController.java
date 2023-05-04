@@ -38,24 +38,6 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
-    //Get Account Details
-    @GetMapping(path="/account/{accountId}")
-    private Account getAccount(@PathVariable Integer accountId){
-        return accountService.getAccountById(accountId);
-    }
-
-    //Delete Account
-    @DeleteMapping(path="/account/{accountId}")
-    private void deleteAccount(@PathVariable("accountId") int accountId) {
-        accountService.delete(accountId);
-    }
-
-    @GetMapping(path="/test")
-    public ResponseEntity<String> test() {
-        return new ResponseEntity<>("Account Management Service", HttpStatus.OK );
-    }
-
-
     @PostMapping(path="/add")
     public ResponseEntity<Account> addCustomer(@RequestBody Account account) {
 
@@ -64,6 +46,7 @@ public class AccountController {
     }
 
     //Fault Tolerance using Hystrix
+    //Get Account Details
     @GetMapping("/id/{accountId}")
     @HystrixCommand(fallbackMethod = "handleCustomerDownTime")
     public ResponseEntity<RequiredResponse> getAllDataBasedOnCenterId(@PathVariable Integer accountId){
@@ -88,6 +71,12 @@ public class AccountController {
         return new ResponseEntity<RequiredResponse>(requiredResponse, HttpStatus.OK);
     }
 
+     //Delete Account
+    @DeleteMapping(path="/account/{accountId}")
+    private void deleteAccount(@PathVariable("accountId") int accountId) {
+        accountService.delete(accountId);
+    }
+    
     // checkBalance
     @GetMapping("/account/{accountId}/balance")
     public int getBalance(@PathVariable int accountId) {
