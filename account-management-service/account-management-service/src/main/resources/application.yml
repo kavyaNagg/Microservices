@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: account-management-service6
+    name: account-management-service
   datasource:
     url: jdbc:mysql://localhost:3306/AccountDB
     password: root
