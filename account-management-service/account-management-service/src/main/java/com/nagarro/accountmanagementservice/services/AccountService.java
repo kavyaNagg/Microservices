@@ -37,12 +37,12 @@ public class AccountService {
     }
 
     //Deposit Amount
-    public void depositAmount(int accountId, Integer amount) {
+    public void depositAmount(int accountId, double amount) {
         accountRepository.saveBalanceByAcctId(accountId, amount);
     }
 
     //Withdraw Amount
-    public void withdrawAmount(int accountId, Integer amount) {
+    public void withdrawAmount(int accountId, double amount) {
         accountRepository.withdrawAmountByAcctId(accountId, amount);
     }
 }
